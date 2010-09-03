@@ -1,0 +1,8 @@
+if(tools:::.OStype() == "windows") {
+importFrom(utils, winProgressBar, getWinProgressBar, setWinProgressBar)
+}
+importFrom(utils, txtProgressBar, getTxtProgressBar, setTxtProgressBar)
+#importFrom(tcltk, tkProgressBar, getTkProgressBar, setTkProgressBar)
+export(pbapply, pbsapply, pblapply, pbreplicate,
+    startpb, setpb, getpb, closepb, dopb, pboptions)
+
