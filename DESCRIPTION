@@ -1,8 +1,8 @@
 Package: pbapply
 Type: Package
 Title: Adding Progress Bar to '*apply' Functions
-Version: 1.0-4
-Date: 2010-09-08
+Version: 1.0-5
+Date: 2012-07-06
 Author: Peter Solymos
 Maintainer: Peter Solymos <solymos@ualberta.ca>
 Description: A lightweight package that adds progress bar to vectorized
@@ -11,6 +11,6 @@ Description: A lightweight package that adds progress bar to vectorized
         (e.g. bootstrap).
 License: GPL-2
 LazyLoad: yes
-Packaged: 2011-10-24 05:13:31 UTC; localadmin
+Packaged: 2012-07-06 21:02:06 UTC; Peter
 Repository: CRAN
-Date/Publication: 2011-10-24 06:17:12
+Date/Publication: 2012-07-07 06:52:17
