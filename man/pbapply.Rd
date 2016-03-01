@@ -55,7 +55,7 @@ it can take values \code{c("txt", "win", "tk", "none",)} on Windows,
 and \code{c("txt", "tk", "none",)} on Unix systems.
 
 Other options have elements that are arguments used in the functions
-\code{\link[utils]{txtProgressBar}} (for \code{"pbapply.txt"} option),
+\code{\link{timerProgressBar}}, \code{\link[utils]{txtProgressBar}},
 #ifdef windows
 \code{\link[utils]{winProgressBar}},
 #endif
@@ -94,6 +94,7 @@ Conveniently add progress bar to \code{for}-like loops:
 }
 \examples{
 ## --- simple linear model simulation ---
+set.seed(1234)
 n <- 200
 x <- rnorm(n)
 y <- rnorm(n, model.matrix(~x) \%*\% c(0,1), sd=0.5)
@@ -104,20 +105,35 @@ ndat <- model.frame(mod)
 B <- 100
 bid <- sapply(1:B, function(i) sample(nrow(ndat), nrow(ndat), TRUE))
 fun <- function(z) {
-    ndat <- ndat[sample(nrow(ndat), nrow(ndat), TRUE),]
+    if (missing(z))
+        z <- sample(nrow(ndat), nrow(ndat), TRUE)
     coef(lm(mod$call$formula, data=ndat[z,]))
 }
+
 ## standard '*apply' functions
 system.time(res1 <- lapply(1:B, function(i) fun(bid[,i])))
 system.time(res2 <- sapply(1:B, function(i) fun(bid[,i])))
 system.time(res3 <- apply(bid, 2, fun))
+system.time(res4 <- replicate(B, fun()))
+
 ## 'pb*apply' functions
 ## try different settings:
-## "none", "txt", "tk"
-options("pbapply.pb"="txt")
-system.time(res4 <- pblapply(1:B, function(i) fun(bid[,i])))
-system.time(res5 <- pbsapply(1:B, function(i) fun(bid[,i])))
-system.time(res6 <- pbapply(bid, 2, fun))
+## "none", "txt", "tk", "win", "timer"
+op <- pboptions(type="timer") # default
+system.time(res1pb <- pblapply(1:B, function(i) fun(bid[,i])))
+pboptions(op)
+
+pboptions(type="txt")
+system.time(res2pb <- pbsapply(1:B, function(i) fun(bid[,i])))
+pboptions(op)
+
+pboptions(type="txt", style=1, char="=")
+system.time(res3pb <- pbapply(bid, 2, fun))
+pboptions(op)
+
+pboptions(type="txt", char=":")
+system.time(res4pb <- pbreplicate(B, fun()))
+pboptions(op)
 
 ## --- Examples taken from standard '*apply' functions ---
 
