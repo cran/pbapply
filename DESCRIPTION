@@ -1,15 +1,15 @@
 Package: pbapply
 Type: Package
 Title: Adding Progress Bar to '*apply' Functions
-Version: 1.2-1
-Date: 2016-04-19
+Version: 1.2-2
+Date: 2016-08-25
 Author: Peter Solymos [aut, cre], Zygmunt Zawadzki [aut]
 Maintainer: Peter Solymos <solymos@ualberta.ca>
 Description: A lightweight package that adds
   progress bar to vectorized R functions
   ('*apply'). The implementation can easily be added
   to functions where showing the progress is
-  useful (e.g. bootstrap). The type and style of the 
+  useful (e.g. bootstrap). The type and style of the
   progress bar (with percentages or remaining time)
   can be set through options.
 Depends: R (>= 3.2.0)
@@ -18,6 +18,6 @@ URL: https://github.com/psolymos/pbapply
 BugReports: https://github.com/psolymos/pbapply/issues
 LazyLoad: yes
 NeedsCompilation: no
-Packaged: 2016-04-19 06:50:40 UTC; root
+Packaged: 2016-08-26 07:26:22 UTC; root
 Repository: CRAN
-Date/Publication: 2016-04-19 13:50:16
+Date/Publication: 2016-08-26 14:25:52
