@@ -98,12 +98,15 @@ The \code{timerProgressBar} implementation
 follows closely the code of \code{\link[utils]{txtProgressBar}}.
 }
 \examples{
+## increase sluggishness to admire the progress bar longer
+sluggishness <- 0.02
+
 test_fun <- function(...)
 {
     pb <- timerProgressBar(...)
     on.exit(close(pb))
     for(i in seq(0, 1, 0.05)) {
-        Sys.sleep(0.05)
+        Sys.sleep(sluggishness)
         setTimerProgressBar(pb, i)
     }
     invisible(NULL)
@@ -116,6 +119,9 @@ test_fun(width = 50, char = ".", style = 3)
 test_fun(style = 4)
 test_fun(width = 35, char = "[=-]", style = 5)
 test_fun(width = 50, char = "{*.}", style = 6)
+
+## no bar only percent and elapsed
+test_fun(width = 0, char = "    ", style = 6)
 
 ## this should produce a progress bar based on min_time
 (elapsed <- system.time(test_fun(width = 35, min_time = 0))["elapsed"])
