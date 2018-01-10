@@ -5,6 +5,7 @@
 \alias{getpb}
 \alias{closepb}
 \alias{dopb}
+\alias{pbtypes}
 \title{
 Creating Progress Bar and Setting Options
 }
@@ -18,6 +19,7 @@ setpb(pb, value)
 getpb(pb)
 closepb(pb)
 dopb()
+pbtypes()
 }
 \arguments{
   \item{\dots}{
@@ -53,7 +55,9 @@ Tags are the following:
     text (\code{"txt"}),
     Windows (\code{"win"}), TclTk (\code{"tk"}), or none (\code{"none"}).
     Default value is \code{"timer"} progress bar with estimated remaining time
-    when in interactive mode, and \code{"none"} otherwise.}
+    when in interactive mode, and \code{"none"} otherwise.
+    See \code{pbtypes()} for available progress bar types
+    depending on operating system.}
   \item{char}{The character (or character string) to form the progress bar.
     Default value is \code{"+"}.}
   \item{txt.width}{The width of the text based progress bar, as a multiple
@@ -81,6 +85,8 @@ Tags are the following:
     \code{\link{timerProgressBar}} output is printed only if
     estimated completion time is higher than this value.
     The default value is 0.}
+  \item{use_lb}{Switch for using load balancing when running in
+    parallel clusters. The default value is \code{FALSE}.}
 
 For \code{startpb} a progress bar object.
 
@@ -95,6 +101,10 @@ It is \code{FALSE} if the type of progress bar is \code{"none"} or
 \code{NULL}.
 
 For \code{closepb} closes the connection for the progress bar.
+
+\code{pbtypes} prints the available progress bar types
+depending on the operating system (i.e. \code{"win"} available
+on Windows only).
 }
 \author{
 Peter Solymos <solymos@ualberta.ca>
@@ -109,12 +119,15 @@ Progress bars used in the functions:
 \code{\link[tcltk]{tkProgressBar}}
 }
 \examples{
+## increase sluggishness to admire the progress bar longer
+sluggishness <- 0.01
+
 ## for loop
 fun1 <- function() {
     pb <- startpb(0, 10)
     on.exit(closepb(pb))
     for (i in 1:10) {
-        Sys.sleep(0.15)
+        Sys.sleep(sluggishness)
         setpb(pb, i)
     }
     invisible(NULL)
@@ -125,7 +138,7 @@ fun2 <- function() {
     on.exit(closepb(pb))
     i <- 1
     while (i < 10) {
-        Sys.sleep(0.15)
+        Sys.sleep(sluggishness)
         setpb(pb, i)
         i <- i + 1
     }
@@ -147,7 +160,7 @@ fun1()
 
 ## dealing with nested progress bars
 ## when only one the 1st one is needed
-f <- function(x) Sys.sleep(0.01)
+f <- function(x) Sys.sleep(sluggishness)
 g <- function(x) pblapply(1:10, f)
 tmp <- lapply(1:10, g) # undesirable
 ## here is the desirable solution
@@ -157,6 +170,9 @@ h <- function(x) {
     pblapply(1:10, f)
 }
 tmp <- pblapply(1:10, h)
+
+## list available pb types
+pbtypes()
 }
 \keyword{ IO }
 \keyword{ utilities }
