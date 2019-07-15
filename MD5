@@ -1,4 +1,4 @@
-1df36194031b4cc255e4efc10cd141ac *DESCRIPTION
+d4dee4645393acdf6563a4c13c456197 *DESCRIPTION
 4b07d493b757b9c4ac00c29bbe26aa30 *NAMESPACE
 c9afd75355061c7922a002ec6ddb33c9 *R/closepb.R
 41a4c3404c4c5a5268bd061394f126f4 *R/dopb.R
@@ -10,7 +10,7 @@ c3bf9e4bd402dc0dde193bcc9783ad08 *R/pbmapply.R
 d40dc483c2eb8643b6e329da442ff74d *R/pbsapply.R
 21b0f6a695aec62bfecdb1d5dc84c48d *R/pbtypes.R
 f353dd9c023034a3dd7b554481f2cb0b *R/splitpb.R
-863ffae55e79aa081c2d196a8923ce6c *R/timerProgressBar.R
+d9d63de08a9036562bdc3a139350a110 *R/timerProgressBar.R
 2a9e06eaae38c714caef04394e528f4f *R/unix/getpb.R
 d7ade2ac6cca19205c48196f676b4c2d *R/unix/setpb.R
 abbfcb9ec095f9e6a1a5066a1b463549 *R/unix/startpb.R
@@ -18,7 +18,7 @@ abbfcb9ec095f9e6a1a5066a1b463549 *R/unix/startpb.R
 311c277daa16a7d14792f97178cf34e9 *R/windows/setpb.R
 6709ac3060b2a1167e16e51124ed31b7 *R/windows/startpb.R
 9becb214351484d70c673190fc52ebea *R/zzz.R
-1e832e64d16b5d7ca38c68596d22c40f *man/pbapply.Rd
+c6fda63d55232282681bdb043a49b388 *man/pbapply.Rd
 ac2ab753708e6cdacb203d4d905cb2e6 *man/pboptions.Rd
 f032d5b07255b3ca4062e0c06c6136fd *man/splitpb.Rd
 0b1cc9b59c2601f9cd96a2cfa1c05f5d *man/timerProgressBar.Rd
