@@ -2,8 +2,10 @@
 \alias{pbapply}
 \alias{pbsapply}
 \alias{pblapply}
+\alias{pbwalk}
 \alias{pbreplicate}
 \alias{pbmapply}
+\alias{pb.mapply}
 \alias{pbtapply}
 \title{
 Adding Progress Bar to '*apply' Functions
@@ -14,6 +16,7 @@ parallel processing.
 }
 \usage{
 pblapply(X, FUN, ..., cl = NULL)
+pbwalk(X, FUN, ..., cl = NULL)
 
 pbapply(X, MARGIN, FUN, ..., simplify = TRUE, cl = NULL)
 
@@ -22,12 +25,13 @@ pbsapply(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE, cl = NULL)
 pbreplicate(n, expr, simplify = "array", cl = NULL)
 
 pbmapply(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+pb.mapply(FUN, dots, MoreArgs)
 
 pbtapply(X, INDEX, FUN = NULL, ..., default = NA, simplify = TRUE, cl = NULL)
 }
 \arguments{
   \item{X}{
-For \code{pbsapply} and \code{pblapply},
+For \code{pbsapply}, \code{pblapply}, and \code{pbwalk}
 a vector (atomic or list) or an expressions vector
 (other objects including classed objects will be
 coerced by \code{\link{as.list}}.)
@@ -52,6 +56,11 @@ multi-way array \code{pbtapply} normally produces.
 Optional arguments to \code{FUN} and also to underlying functions (e.g.
 \code{\link{parLapply}} and \code{\link{mclapply}} when \code{cl}
 is not \code{NULL}).
+}
+  \item{dots}{
+List of arguments to vectorize over (vectors or lists
+of strictly positive length, or all of zero length);
+see \code{\link{.mapply}}.
 }
   \item{simplify, SIMPLIFY}{
 Logical; should the result be simplified to a vector or matrix if possible?
@@ -95,7 +104,7 @@ it may be set, e.g., to \code{FUN(integer(0))}, e.g., in the case of
 }
 }
 \details{
-The behaviour of the progress bar is controlled by the option
+The behavior of the progress bar is controlled by the option
 \code{type} in \code{\link{pboptions}},
 it can take values \code{c("txt", "win", "tk", "none",)} on Windows,
 and \code{c("txt", "tk", "none",)} on Unix systems.
@@ -130,7 +139,11 @@ Care must be taken to set appropriate random numbers in this case.
 Note the \code{use_lb} option (see \code{\link{pboptions}})
 for using load balancing when running in parallel clusters.
 If using \code{\link{mclapply}}, the \code{...} passes
-arguments to the underlying function for further contol.
+arguments to the underlying function for further control.
+
+\code{pbwalk} is similar to \code{pblapply} but it calls \code{FUN}
+only for its side-effect and returns the input \code{X} invisibly
+(this behavior is modeled after `purrr::walk`).
 }
 \value{
 Similar to the value returned by the standard \code{*apply} functions.
@@ -155,7 +168,8 @@ Progress bars used in the functions:
 Sequential \code{*apply} functions:
 \code{\link{apply}}, \code{\link{sapply}},
 \code{\link{lapply}}, \code{\link{replicate}},
-\code{\link{mapply}}, \code{\link{tapply}}
+\code{\link{mapply}}, \code{\link{.mapply}},
+\code{\link{tapply}}
 
 Parallel \code{*apply} functions from package 'parallel':
 \code{\link{parLapply}},
@@ -256,6 +270,7 @@ require(stats); require(graphics)
 x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
 # compute the list mean for each list element
 pblapply(x, mean)
+pbwalk(x, mean)
 # median and quartiles for each list element
 pblapply(x, quantile, probs = 1:3/4)
 pbsapply(x, quantile)
@@ -267,7 +282,7 @@ pbsapply(i39, fivenum)
 f2 <- function(x, y) outer(rep(x, length.out = 3), y)
 (a2 <- pbsapply(v, f2, y = 2*(1:5), simplify = "array"))
 
-hist(pbreplicate(100, mean(rexp(10))))
+summary(pbreplicate(100, mean(rexp(10))))
 
 ## use of replicate() with parameters:
 foo <- function(x = 1, y = 2) c(x, y)
@@ -318,7 +333,7 @@ zseq[1,]
 pbapply(z, 3, function(x) seq_len(max(x)))
 # a list without a dim attribute
 
-## --- mapply ---
+## --- mapply and .mapply ---
 
 pbmapply(rep, 1:4, 4:1)
 pbmapply(rep, times = 1:4, x = 4:1)
@@ -328,6 +343,20 @@ pbmapply(function(x, y) seq_len(x) + y,
        c(A = 10, B = 0, C = -10))
 word <- function(C, k) paste(rep.int(C, k), collapse = "")
 utils::str(pbmapply(word, LETTERS[1:6], 6:1, SIMPLIFY = FALSE))
+
+pb.mapply(rep,
+          dots = list(1:4, 4:1),
+          MoreArgs = list())
+pb.mapply(rep,
+          dots = list(times = 1:4, x = 4:1),
+          MoreArgs = list())
+pb.mapply(rep,
+          dots = list(times = 1:4),
+          MoreArgs = list(x = 42))
+pb.mapply(function(x, y) seq_len(x) + y,
+          dots = list(c(a =  1, b = 2, c = 3),  # names from first
+                      c(A = 10, B = 0, C = -10)),
+          MoreArgs = list())
 
 ## --- tapply ---
 
