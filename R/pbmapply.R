@@ -46,3 +46,8 @@ function(FUN, dots, MoreArgs)
     ## piggy back on .mapply
     .mapply(.pb_env$FUN, dots = dots, MoreArgs = MoreArgs)
 }
+
+pbMap <- function (f, ...) {
+    f <- match.fun(f)
+    pbmapply(FUN = f, ..., SIMPLIFY = FALSE)
+}
