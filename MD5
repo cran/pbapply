@@ -1,13 +1,13 @@
-10e36ee8cecae67c95a1edeb8b427352 *DESCRIPTION
+5e675a912167a64898c981e1bc6fa493 *DESCRIPTION
 f48d9a6721a18a82c2b686fd3ce5f00e *NAMESPACE
-faab384b884d0553e421e0719f1c6486 *NEWS.md
+2cd2eae2f8420c25eba98ac618c54716 *NEWS.md
 433d100654601a1d53f3d1ebe7d03a84 *R/closepb.R
 41a4c3404c4c5a5268bd061394f126f4 *R/dopb.R
 6871ea5b03b9c44fb88ad30a0571afe5 *R/doshiny.R
 1fc3c173222884b86fca6dab59b7032c *R/pbapply.R
 3fa977e6dd2d692aa8e23177fa534543 *R/pbby.R
 476a1aac11680fcf52c7013a2bbe252a *R/pbeapply.R
-bd9b5936482993b654a275fa4ac0d6f1 *R/pblapply.R
+76b152331ed562c396b6f9d4aedefea8 *R/pblapply.R
 55009f89c333af73f4ce0f3b8501928f *R/pbmapply.R
 56640b298b3c95255a1dc60302a23fee *R/pboptions.R
 85fb7bf9dec3cba585b01fe5c5ff9914 *R/pbreplicate.R
@@ -26,7 +26,7 @@ e7a82f8e68355636ac84e5813e92ce64 *R/windows/setpb.R
 24308ce464045d47469f102e35e05724 *R/windows/startpb.R
 9becb214351484d70c673190fc52ebea *R/zzz.R
 15b310a8294963b6abb601d92998d8a2 *inst/WORDLIST
-9794d401ab8016faa6881dfb228cdbf5 *man/pbapply.Rd
+694ce7d545c7beb99f9cb8ce824ad345 *man/pbapply.Rd
 dcd875a0ccf284ed8fd482e234c81c3b *man/pboptions.Rd
 f032d5b07255b3ca4062e0c06c6136fd *man/splitpb.Rd
 0b1cc9b59c2601f9cd96a2cfa1c05f5d *man/timerProgressBar.Rd
