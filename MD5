@@ -1,6 +1,6 @@
-5e675a912167a64898c981e1bc6fa493 *DESCRIPTION
+877ba7fce747a8d5443045837df024b8 *DESCRIPTION
 f48d9a6721a18a82c2b686fd3ce5f00e *NAMESPACE
-2cd2eae2f8420c25eba98ac618c54716 *NEWS.md
+5fc0d3a24f3d9165de868c855870ba0d *NEWS.md
 433d100654601a1d53f3d1ebe7d03a84 *R/closepb.R
 41a4c3404c4c5a5268bd061394f126f4 *R/dopb.R
 6871ea5b03b9c44fb88ad30a0571afe5 *R/doshiny.R
@@ -10,7 +10,7 @@ f48d9a6721a18a82c2b686fd3ce5f00e *NAMESPACE
 76b152331ed562c396b6f9d4aedefea8 *R/pblapply.R
 55009f89c333af73f4ce0f3b8501928f *R/pbmapply.R
 56640b298b3c95255a1dc60302a23fee *R/pboptions.R
-85fb7bf9dec3cba585b01fe5c5ff9914 *R/pbreplicate.R
+079dd57b30c6d530c2787dc537356278 *R/pbreplicate.R
 d40dc483c2eb8643b6e329da442ff74d *R/pbsapply.R
 57a9da7cc343460cc86c716d4108bfd6 *R/pbtapply.R
 b968cb6437d87e54771d6b48abc5d5fa *R/pbtypes.R
@@ -20,14 +20,14 @@ f353dd9c023034a3dd7b554481f2cb0b *R/splitpb.R
 95ef9ddd43419513066d540cbc743419 *R/timerProgressBar.R
 c9f3ee366d88ed8ec9c1608a2c6654b2 *R/unix/getpb.R
 d419bc6af7d90b1ec1cba977a09a05b6 *R/unix/setpb.R
-6d49e8eef9a071958187282aa85d1cd5 *R/unix/startpb.R
+99658288f1d6109e16928faf15c72b5b *R/unix/startpb.R
 1669e20014fe66312868df96fde6c1dd *R/windows/getpb.R
 e7a82f8e68355636ac84e5813e92ce64 *R/windows/setpb.R
-24308ce464045d47469f102e35e05724 *R/windows/startpb.R
+303b9e0f3b0b7c03f09d53747b74f311 *R/windows/startpb.R
 9becb214351484d70c673190fc52ebea *R/zzz.R
-15b310a8294963b6abb601d92998d8a2 *inst/WORDLIST
-694ce7d545c7beb99f9cb8ce824ad345 *man/pbapply.Rd
+d2bc94ff14cae3b77d597b15720f4c99 *inst/WORDLIST
+bafb48591350b2e12738cc7ab99d6301 *man/pbapply.Rd
 dcd875a0ccf284ed8fd482e234c81c3b *man/pboptions.Rd
 f032d5b07255b3ca4062e0c06c6136fd *man/splitpb.Rd
 0b1cc9b59c2601f9cd96a2cfa1c05f5d *man/timerProgressBar.Rd
-9e18725fc0670f720a3fac64e9c849c5 *tests/tests.R
+4ccd1ebfbfc4e7f9555ace4ce86ed2d3 *tests/tests.R

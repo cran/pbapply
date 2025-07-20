@@ -1,3 +1,8 @@
+# Version 1.7-4, July 19, 2025
+
+* Fixed initial message issue with Shiny (#69).
+* Fix: `pbreplicate` was not passing future related arguments (#71).
+
 # Version 1.7-2, June 27, 2023
 
 * Documented `.pb_env` environment to address WARNING after CRAN submission.
